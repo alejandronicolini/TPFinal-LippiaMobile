@@ -5,7 +5,6 @@ public class TimesEntryConstants {
      public static final String BTN_ADD_ENTRY = "id:floating_action_button";
     public static final String DIV_SECTION_HORARIO = "id:number_picker_container";
     public static final String LABEL_START = "id:timeentry_start_label";
-    public static final String PICKER_DAY = "ACCESSIBILITY_ID:27 October 2022";
     public static final String BTN_START = "ACCESSIBILITY_ID:START";
     public static final String BTN_END = "ACCESSIBILITY_ID:END";
     public static final String INPUT_HORA = "xpath://android.widget.NumberPicker[1]/*[@class=\"android.widget.EditText\"]";

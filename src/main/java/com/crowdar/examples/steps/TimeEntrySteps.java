@@ -15,16 +15,28 @@ public class TimeEntrySteps extends PageSteps {
         TimeEntryService.addEntry();
     }
 
-    @And("ingresa a Time Range, selecciona un dia")
-    public void ingresaATimeRangeSeleccionaUnDia() {
+    @And("ingresa a Time Range")
+    public void inToTimeRange() {
         TimeEntryService.clicOnLabelStart();
-        TimeEntryService.clicOnSomeDay();
     }
 
-    @And("ingresa un horario de inicio: {string} : {string} y de finalizacion: {string} : {string}")
-    public void setHorarioInicioYFinalizacion(String hora1, String min1, String hora2, String min2) {
-        TimeEntryService.setHorarioInicio(hora1, min1);
-        TimeEntryService.setHorarioFin(hora2, min2);
+    @And("selecciona el dia {string} de {string} de {string}")
+    public void seleccionaElDiaDeDe(String dia, String mes, String anio) {
+        TimeEntryService.clicOnSomeDay(dia, mes, anio);
+    }
+
+    @And("ingresa un horario de inicio: {string} : {string}")
+    public void setHorarioInicio(String hora, String min) {
+        TimeEntryService.setHorarioInicio(hora, min);
+    }
+
+    @And("de finalizacion: {string} : {string}")
+    public void setHorarioFinalizacion(String hora, String min) {
+        TimeEntryService.setHorarioFin(hora, min);
+    }
+
+    @And("clic en boton save")
+    public void clicEnBotonSave() {
         TimeEntryService.clicOnBtnSave();
     }
 
@@ -33,9 +45,13 @@ public class TimeEntrySteps extends PageSteps {
         TimeEntryService.setNombreTarea(tarea);
     }
 
-    @And("selecciona un proyecto y confirma la tarea")
-    public void seleccionaUnProyectoYConfirmaLaTarea() {
+    @And("selecciona un proyecto")
+    public void seleccionaUnProyecto() {
         TimeEntryService.selectProject();
+    }
+
+    @And("confirma la tarea")
+    public void confirmaLaTarea() {
         TimeEntryService.clicOnBtnSave();
     }
 

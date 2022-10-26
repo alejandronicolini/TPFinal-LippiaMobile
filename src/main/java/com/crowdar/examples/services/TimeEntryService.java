@@ -16,8 +16,9 @@ public class TimeEntryService {
         MobileActionManager.click(TimesEntryConstants.LABEL_START);
     }
 
-    public static void clicOnSomeDay() {
-        MobileActionManager.click(TimesEntryConstants.PICKER_DAY);
+    public static void clicOnSomeDay(String dia, String mes, String anio) {
+        String fecha = String.format("ACCESSIBILITY_ID:%s %s %s", dia, mes,anio);
+        MobileActionManager.click(fecha);
     }
 
     public static void setHorarioInicio(String hora, String min) {
@@ -32,13 +33,12 @@ public class TimeEntryService {
 
     private static void inputHorario(String hora, String min) {
         MobileActionManager.click(TimesEntryConstants.INPUT_HORA);
-        for (int i = 0; i < 2; i++) {   //es necesario repetir el input para que tome el valor
-            MobileActionManager.setInput(TimesEntryConstants.INPUT_HORA, hora);
-        }
+        MobileActionManager.setInput(TimesEntryConstants.INPUT_HORA, hora); //es necesario repetir el input para que tome el valor
+        MobileActionManager.setInput(TimesEntryConstants.INPUT_HORA, hora);
+
         MobileActionManager.click(TimesEntryConstants.INPUT_MIN);
-        for (int i = 0; i < 2; i++) {   //es necesario repetir el input para que tome el valor
-            MobileActionManager.setInput(TimesEntryConstants.INPUT_MIN, min);
-        }
+        MobileActionManager.setInput(TimesEntryConstants.INPUT_MIN, min); //es necesario repetir el input para que tome el valor
+        MobileActionManager.setInput(TimesEntryConstants.INPUT_MIN, min);
     }
 
     public static void setNombreTarea(String tarea) {
