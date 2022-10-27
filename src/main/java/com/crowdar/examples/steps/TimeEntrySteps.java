@@ -45,8 +45,8 @@ public class TimeEntrySteps extends PageSteps {
         TimeEntryService.setNombreTarea(tarea);
     }
 
-    @And("selecciona un proyecto")
-    public void seleccionaUnProyecto() {
+    @And("selecciona el primer proyecto")
+    public void seleccionaPrimerProyecto() {
         TimeEntryService.selectProject();
     }
 

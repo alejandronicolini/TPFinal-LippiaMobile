@@ -20,7 +20,7 @@ Feature: As a client i want to interact with the mobile application
     And de finalizacion: "17" : "50"
     And clic en boton save
     And ingresa un nombre de tarea: "Tarea Nueva"
-    And selecciona un proyecto
+    And selecciona el primer proyecto
     And confirma la tarea
     Then redirige a la seccion time entry
     And aparece la entrada creada: "Tarea Nueva"

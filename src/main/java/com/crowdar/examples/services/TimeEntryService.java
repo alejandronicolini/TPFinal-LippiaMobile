@@ -57,8 +57,8 @@ public class TimeEntryService {
     }
 
     public static void verifyNewEntry(String nombre) {
-        String contenido = MobileActionManager.getText(TimesEntryConstants.TITLE_TASK);
-        Assert.assertTrue(contenido.contains(nombre), "el proyecto no esta presente en el listado");
+        String tituloTask = MobileActionManager.getText(TimesEntryConstants.TITLE_TASK);
+        Assert.assertTrue(tituloTask.contains(nombre), "el proyecto no esta presente en el listado");
     }
 
     public static void clicOnBtnSave() {

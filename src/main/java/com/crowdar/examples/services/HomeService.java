@@ -10,12 +10,12 @@ public class HomeService {
 
     public static void isTimeListPresent() {
         MobileActionManager.waitVisibility(HomeConstants.LAYOUT_TIME_LIST);
-        String strEsperado = "Time entries";
-        String strRecibido = MobileActionManager.getText(HomeConstants.LAYOUT_TITLE);
+        String tituloEsperado = "Time entries";
+        String tituloRecibido = MobileActionManager.getText(HomeConstants.LAYOUT_TITLE);
 
         SoftAssert assertsSoft = new SoftAssert();
         assertsSoft.assertTrue(MobileActionManager.isVisible(HomeConstants.LAYOUT_TIME_LIST), "el Frame, Time List no esta presente");
-        assertsSoft.assertEquals(strEsperado, strRecibido, "no coincide el txt recibido");
+        assertsSoft.assertEquals(tituloEsperado, tituloRecibido, "no coincide el txt recibido");
         assertsSoft.assertAll();
     }
 
