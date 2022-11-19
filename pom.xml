@@ -25,6 +25,7 @@
     </properties>
 
     <profiles>
+
         <profile>
             <id>Local</id>
             <activation>
@@ -34,10 +35,11 @@
                 <crowdar.driverHub>http://127.0.0.1:4723/wd/hub</crowdar.driverHub>
                 <cucumber.runner>testng.xml</cucumber.runner>
                 <crowdar.avd>Pixel3</crowdar.avd>
-                <crowdar.appLocation>C:\\\\Ale-Leo\\\\0.Proyectos_programacion\\\\Testing\\\\TP8-Lippia-Mobile-ClockifyApk\\\\sample_apk\\\\Clockify.apk</crowdar.appLocation>
+                <crowdar.appLocation>C:\\\\Users\\\\Alejandro\\\\Desktop\\\\TP-Final\\\\TP-Lippia-Mobile\\\\sample_apk\\\\Clockify.apk</crowdar.appLocation>
                 <crowdar.deviceName>Pixel3</crowdar.deviceName>
             </properties>
         </profile>
+
         <profile>
             <id>StackLocal</id>
             <properties>
@@ -47,6 +49,7 @@
                 <crowdar.deviceName>Android Emulator</crowdar.deviceName>
             </properties>
         </profile>
+
         <profile>
             <id>Android</id>
             <activation>
@@ -56,12 +59,14 @@
                 <crowdar.projectType>MOBILE_ANDROID</crowdar.projectType>
             </properties>
         </profile>
+
         <profile>
             <id>Ios</id>
             <properties>
                 <crowdar.projectType>MOBILE_IOS</crowdar.projectType>
             </properties>
         </profile>
+
     	<profile>
             <id>BrowserStack</id>
             <properties>
@@ -73,6 +78,7 @@
                 <crowdar.driverHub>https://user:key@hub-cloud.browserstack.com/wd/hub</crowdar.driverHub>
             </properties>
         </profile>
+
     </profiles>
 
     <dependencies>

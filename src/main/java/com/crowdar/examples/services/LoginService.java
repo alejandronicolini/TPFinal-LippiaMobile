@@ -5,29 +5,42 @@ import com.crowdar.examples.constants.LoginConstants;
 import org.testng.Assert;
 
 
-public class LoginService {
+public class LoginService extends MobileActionManager {
 
 
     public static void isViewLoadedClockify() {
-        MobileActionManager.waitVisibility(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
-        Assert.assertTrue(MobileActionManager.isVisible(LoginConstants.EMAIL_INPUT_CLOCKIFY), "no se pudo cargar: Login Page");
+        waitVisibility(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
+        Assert.assertTrue(isVisible(LoginConstants.EMAIL_INPUT_CLOCKIFY), "no se pudo cargar: Login Page");
     }
 
-    public static void inputLoginData(String email, String pass) {
+    public static void doLogin(String email, String pass) {
         inputLoginEmail(email);
         inputLoginPass(pass);
         clicBtnLogin();
     }
 
+    public static void doLogOut(){
+        HomeService.clickMenuOpciones();
+        HomeService.clickOpcionLogOut();
+        HomeService.clickConfirmacion();
+        verificacionBtnLogin();
+    }
+
     public static void inputLoginEmail(String email) {
-        MobileActionManager.setInput(LoginConstants.EMAIL_INPUT_CLOCKIFY, email, true,false);
+        setInput(LoginConstants.EMAIL_INPUT_CLOCKIFY, email, true,false);
     }
 
     public static void inputLoginPass(String pass) {
-        MobileActionManager.setInput(LoginConstants.PASSWORD_INPUT_CLOCKIFY, pass, true,false);
+        setInput(LoginConstants.PASSWORD_INPUT_CLOCKIFY, pass, true,false);
     }
 
     public static void clicBtnLogin() {
-        MobileActionManager.click(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
+        click(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
     }
+
+    public static void verificacionBtnLogin() {
+        waitVisibility(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
+        Assert.assertTrue(isVisible(LoginConstants.SIGN_IN_BTN_CLOCKIFY), "El Boton de Login no se encuentra");
+    }
+
 }
