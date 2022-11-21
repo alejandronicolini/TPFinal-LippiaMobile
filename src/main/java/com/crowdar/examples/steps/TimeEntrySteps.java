@@ -1,7 +1,9 @@
 package com.crowdar.examples.steps;
 
 import com.crowdar.core.PageSteps;
+import com.crowdar.examples.services.LoginService;
 import com.crowdar.examples.services.TimeEntryService;
+import com.crowdar.examples.services.TpUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,19 +12,19 @@ import io.cucumber.java.en.When;
 public class TimeEntrySteps extends PageSteps {
 
 
-    @When("agrega una entrada")
-    public void addAnEntry() {
-        TimeEntryService.addEntry();
+    @When("Agrega una entrada")
+    public void agregaEntrada() {
+        TimeEntryService.clicBtnAgregarEntrada();
     }
 
     @And("ingresa a Time Range")
     public void inToTimeRange() {
-        TimeEntryService.clicOnLabelStart();
+        TimeEntryService.clicTagStart();
     }
 
-    @And("selecciona el dia {string} de {string} de {string}")
-    public void seleccionaElDiaDeDe(String dia, String mes, String anio) {
-        TimeEntryService.clicOnSomeDay(dia, mes, anio);
+    @And("selecciona el dia {string}-{string}-{string}")
+    public void seleccionaElDia(String dia, String mes, String anio) {
+        TimeEntryService.elegirDia(dia, mes, anio);
     }
 
     @And("ingresa un horario de inicio: {string} : {string}")
@@ -35,9 +37,14 @@ public class TimeEntrySteps extends PageSteps {
         TimeEntryService.setHorarioFin(hora, min);
     }
 
+    @And("ingresa las horas trabajadas: {string}:{string}")
+    public void ingresaLasHorasTrabajadas(String hora, String min) {
+        TimeEntryService.setHorasTrabajadas(hora, min);
+    }
+
     @And("clic en boton save")
     public void clicEnBotonSave() {
-        TimeEntryService.clicOnBtnSave();
+        TimeEntryService.clicBtnSave();
     }
 
     @And("ingresa un nombre de tarea: {string}")
@@ -47,23 +54,41 @@ public class TimeEntrySteps extends PageSteps {
 
     @And("selecciona el primer proyecto")
     public void seleccionaPrimerProyecto() {
-        TimeEntryService.selectProject();
+        TimeEntryService.elegirPrimerProyecto();
     }
 
     @And("confirma la tarea")
     public void confirmaLaTarea() {
-        TimeEntryService.clicOnBtnSave();
+        TimeEntryService.clicBtnSave();
     }
 
     @Then("redirige a la seccion time entry")
     public void redirigeALaSeccionTimeEntry() {
-        TimeEntryService.verifyViewSectionTimeEntry();
+        TimeEntryService.checkVistaSeccionTimeEntry();
     }
 
-    @And("aparece la entrada creada: {string}")
-    public void apareceLaEntradaCreada(String nombre) {
-        TimeEntryService.verifyNewEntry(nombre);
+    @And("aparece la entrada creada")
+    public void apareceLaEntradaCreada() {
+        TimeEntryService.checkNuevaEntrada();
     }
+
+    @And("cancela la tarea y vuelve a la seccion time entry")
+    public void cancelaLaTareaYVuelveALaSeccionTimeEntry() {
+        TimeEntryService.cancelarEntrada();
+        TimeEntryService.clickBtnVolverATimeEntry();
+    }
+
+    @Then("la entrada no queda registrada")
+    public void laEntradaNoQuedaRegistrada() {
+        TimeEntryService.checkAnulacion();
+    }
+
+    @And("AFTER TEST: eliminar tarea - logout")
+    public void afterTESTEliminarTareaLogout() {
+        TimeEntryService.eliminarTarea();
+        LoginService.hacerLogOut();
+    }
+
 
 
 }

@@ -6,10 +6,10 @@ import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 
-public class HomeService extends MobileActionManager{
+public class HomeService extends MobileActionManager {
 
 
-    public static void isTimeListPresent() {
+    public static void checkVistaListaDeEntradas() {
         waitVisibility(HomeConstants.LAYOUT_TIME_LIST);
         String tituloEsperado = "Time entries";
         String tituloRecibido = getText(HomeConstants.LAYOUT_TITLE);
@@ -20,31 +20,44 @@ public class HomeService extends MobileActionManager{
         assertsSoft.assertAll();
     }
 
-    public static void clickMenuOpciones() {
+    public static void clicMenuOpciones() {
         click(HomeConstants.BTN_OPCIONES);
     }
 
-    public static void clickOpcionLogOut() {
+    public static void clicOpcionLogOut() {
+        waitPresence(HomeConstants.BTN_LOG_OUT);
         click(HomeConstants.BTN_LOG_OUT);
     }
 
-    public static void clickConfirmacion() {
+    public static void clicConfirmacion() {
+        waitPresence(HomeConstants.BTN_CONFIRM_LOG_OUT);
         click(HomeConstants.BTN_CONFIRM_LOG_OUT);
     }
 
-    public static void clickOpcionSettings() {
+    public static void clicOpcionSettings() {
         click(HomeConstants.BTN_SETTINGS);
     }
 
-    public static void clickDarkMode() {
+    public static String attrCheckedInicial;
+    public static String attrModoInicial;
+    public static void AtributosInicial(String LocatorBtn) {
+        attrCheckedInicial = getAttribute(LocatorBtn, "checked");
+        attrModoInicial = getAttribute(LocatorBtn, "text");
+    }
+
+    public static void clicBtnDarkMode() {
         click(HomeConstants.BTN_DARKMODE);
     }
 
-    public static void checkAppColor() {
-        String estadoBtn = getAttribute(HomeConstants.BTN_DARKMODE, "active");
-        //Falta hacer un assert con el estado Active
-        String attrText = getAttribute(HomeConstants.BTN_DARKMODE, "text");
-        Assert.assertEquals(attrText, "ON");
+    public static void checkCambioConfiguracion(String LocatorBtn) {
+        String attrCheckedActual = getAttribute(LocatorBtn, "checked");
+        String attrText = getAttribute(LocatorBtn, "text");
+        Assert.assertNotEquals(attrCheckedInicial, attrCheckedActual, "Error: la App no cambio la configuracion requerida");
+        Assert.assertNotEquals(attrModoInicial, attrText);
+    }
+
+    public static void clicBtnShowNotifications() {
+        click(HomeConstants.BTN_SHOW_NOTIFICATIONS);
     }
 
 }

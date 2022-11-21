@@ -8,22 +8,18 @@ import org.testng.Assert;
 public class LoginService extends MobileActionManager {
 
 
-    public static void isViewLoadedClockify() {
-        waitVisibility(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
-        Assert.assertTrue(isVisible(LoginConstants.EMAIL_INPUT_CLOCKIFY), "no se pudo cargar: Login Page");
-    }
-
-    public static void doLogin(String email, String pass) {
+    public static void hacerLogin(String email, String pass) {
         inputLoginEmail(email);
         inputLoginPass(pass);
         clicBtnLogin();
     }
 
-    public static void doLogOut(){
-        HomeService.clickMenuOpciones();
-        HomeService.clickOpcionLogOut();
-        HomeService.clickConfirmacion();
-        verificacionBtnLogin();
+    public static void hacerLogOut(){
+        TpUtils.sleep(1000);
+        HomeService.clicMenuOpciones();
+        HomeService.clicOpcionLogOut();
+        HomeService.clicConfirmacion();
+        checkSeccionLogin();
     }
 
     public static void inputLoginEmail(String email) {
@@ -38,7 +34,9 @@ public class LoginService extends MobileActionManager {
         click(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
     }
 
-    public static void verificacionBtnLogin() {
+    public static void checkSeccionLogin() {
+        waitVisibility(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
+        Assert.assertTrue(isVisible(LoginConstants.EMAIL_INPUT_CLOCKIFY), "no se pudo cargar: Login Page");
         waitVisibility(LoginConstants.SIGN_IN_BTN_CLOCKIFY);
         Assert.assertTrue(isVisible(LoginConstants.SIGN_IN_BTN_CLOCKIFY), "El Boton de Login no se encuentra");
     }

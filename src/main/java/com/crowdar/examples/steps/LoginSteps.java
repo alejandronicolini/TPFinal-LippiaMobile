@@ -15,54 +15,54 @@ public class LoginSteps extends PageSteps {
     private final String mail = PropertyManager.getProperty("user_email");
     private final String password = PropertyManager.getProperty("user_pass");
 
-    @Given("The user is in the sign up page")
-    public void theUserIsInTheSignUpPage() {
-        LoginService.isViewLoadedClockify();
+    @Given("El usuario esta en la pagina LogIn")
+    public void usuarioEnSignUp() {
+        LoginService.checkSeccionLogin();
     }
 
-    @When("The user input valid email")
-    public void theUserInputEmail() {
+    @And("La App muestra la pagina de Login")
+    public void verPaginaLogin() {
+        LoginService.checkSeccionLogin();
+    }
+
+    @Given("El usuario logueado esta en la seccion time entry")
+    public void usuarioHaceLogin() {
+        LoginService.hacerLogin(mail, password);
+    }
+
+    @When("Ingresa un email valido")
+    public void ingresoEmailValido() {
         LoginService.inputLoginEmail(mail);
     }
 
-    @And("input valid password in the application")
-    public void inputPasswordInTheApplication() {
+    @And("Ingresa un password valido en la aplicacion")
+    public void ingresoPasswordValido() {
         LoginService.inputLoginPass(password);
     }
 
-    @And("clic in button login")
-    public void clicInButtonLogin() {
+    @And("Click en button login")
+    public void clicBtnLogin() {
         LoginService.clicBtnLogin();
-    }
-
-    @Given("el usuario logueado esta en la seccion time entry")
-    public void userDoLogin() {
-        LoginService.doLogin(mail, password);
-    }
-
-    @Given("El usuario esta en la Home Page")
-    public void elUsuarioEstaEnLaHomePage() {
-        LoginService.doLogin(mail, password);
     }
 
     @And("Elige el menu opciones")
     public void eligeElMenuOpciones() {
-        HomeService.clickMenuOpciones();
+        HomeService.clicMenuOpciones();
     }
 
     @When("Click en la opcion Log-Out")
-    public void clickEnLaOpcionLogOut() {
-        HomeService.clickOpcionLogOut();
+    public void clicOpcionLogOut() {
+        HomeService.clicOpcionLogOut();
     }
 
     @Then("Confirma la accion")
     public void confirmaLaAccion() {
-        HomeService.clickConfirmacion();
+        HomeService.clicConfirmacion();
     }
 
-    @And("La App muestra la pagina de Login")
-    public void laAppMuestraLaPaginaDeLogin() {
-        LoginService.verificacionBtnLogin();
+    @And("AFTER TEST: logout")
+    public void afterTESTLogout() {
+        LoginService.hacerLogOut();
     }
 
 }
