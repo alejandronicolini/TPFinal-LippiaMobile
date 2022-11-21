@@ -19,7 +19,7 @@ Feature: Gestion de Entradas
   @EntradaConFecha
   Scenario:  3. Agregar una entrada datos con una fecha particular
     And ingresa a Time Range
-    And selecciona el dia "25"-"10"-"2022"
+    And selecciona el dia "10"-"12"-"2022"
     And ingresa un horario de inicio: "10" : "20"
     And de finalizacion: "17" : "50"
     And clic en boton save

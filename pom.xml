@@ -41,6 +41,15 @@
         </profile>
 
         <profile>
+            <id>Dispositivo Fisico</id>
+            <properties>
+                <crowdar.driverHub>http://127.0.0.1:4723/wd/hub</crowdar.driverHub>
+                <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/androidCapabilitiesFisico.json</crowdar.projectType.driverCapabilities.jsonFile>
+                <crowdar.deviceName>LG G5</crowdar.deviceName>
+            </properties>
+        </profile>
+
+        <profile>
             <id>StackLocal</id>
             <properties>
                 <crowdar.driverHub>http://localhost:4444/wd/hub</crowdar.driverHub>
