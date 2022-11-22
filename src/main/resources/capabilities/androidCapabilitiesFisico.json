@@ -1,10 +1,8 @@
 {
   "deviceName": "{{deviceName}}",
-  "app": "{{app}}",
   "platformName": "Android",
-  "resetKeyboard": "true",
-  "unicodeKeyboard": "true",
+  "platformVersion": "11",
   "appium:appPackage": "me.clockify.android",
   "appium:appActivity": "me.clockify.android.presenter.SplashActivity",
-  "appium:appWaitForLaunch": "false"
+  "appium:unicodeKeyboard": "true"
 }

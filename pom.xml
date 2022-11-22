@@ -41,11 +41,11 @@
         </profile>
 
         <profile>
-            <id>Dispositivo Fisico</id>
+            <id>Fisico</id>
             <properties>
                 <crowdar.driverHub>http://127.0.0.1:4723/wd/hub</crowdar.driverHub>
                 <crowdar.projectType.driverCapabilities.jsonFile>src/main/resources/capabilities/androidCapabilitiesFisico.json</crowdar.projectType.driverCapabilities.jsonFile>
-                <crowdar.deviceName>LG G5</crowdar.deviceName>
+                <crowdar.deviceName>moto g(9) plus</crowdar.deviceName>
             </properties>
         </profile>
 
